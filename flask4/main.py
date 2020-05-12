@@ -8,6 +8,8 @@ from data import db_session, news, users
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 import datetime as dt
 
+
+db_session.global_init("db/blogs.sqlite")
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 login_manager = LoginManager()
@@ -191,7 +193,6 @@ def reqister():
 
 
 def main():
-    db_session.global_init("db/blogs.sqlite")
     sessions = db_session.create_session()
     app.run()
 
